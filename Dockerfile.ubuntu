@@ -1,0 +1,9 @@
+FROM ubuntu:23.10
+
+RUN apt-get update && \
+		apt-get install -y build-essential wget
+RUN cd /tmp/ && \
+		wget https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.gz && \
+		tar zxvf boost_1_85_0.tar.gz && \
+		cd boost_1_85_0 && sh bootstrap.sh && ./b2 install && \
+		cd / && rm -rf /tmp/*
